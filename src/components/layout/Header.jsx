@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <header style={styles.header}>
-      <div style={styles.logo}>🐾</div>
+      <div style={styles.logo}>
+        <img src="/public/logos/logo.png" alt="Logo" />
+      </div>
 
       <nav style={styles.nav}>
         <Link to="/">Main Page</Link>
@@ -12,7 +14,9 @@ const Header = () => {
         <Link to="/sales">All sales</Link>
       </nav>
 
-      <div style={styles.cart}>🛒</div>
+      <div style={styles.cart}>
+        <img src="/public/icons/basket.png" alt="Cartlf rjy" />
+        </div>
     </header>
   );
 };
