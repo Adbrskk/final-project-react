@@ -12,7 +12,7 @@ const Header = () => {
         <Link to="/categories">Categories</Link>
         <Link to="/products">All products</Link>
         <Link to="/sales">All sales</Link>
-      </nav>
+      </nav>  
 
       <div style={styles.cart}>
         <img src="/public/icons/basket.png" alt="Cartlf rjy" />
