@@ -46,13 +46,31 @@
 
 .cartWrapper {
   justify-self: end;
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
 }
 
-.cart {
-  width: 32px;
-  height: 32px;
+.cartIcon {
+  width: 48px;
+  height: 48px;
   object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 50%;
+  background-color: #0d50ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: center;
 }

@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './header.module.css';
 
 const Header = () => {
+  const cartCount = 0;
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -55,8 +57,9 @@ const Header = () => {
           <img
             src="/assets/icons/basket.png"
             alt="Cart"
-            className={styles.cart}
+            className={styles.cartIcon}
           />
+          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
         </Link>
       </div>
     </header>
