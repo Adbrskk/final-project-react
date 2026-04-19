@@ -1,9 +1,7 @@
-import products from '../data/products';
+import axios from 'axios';
 
-export const getProducts = async () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(products);
-    }, 500);
-  });
-};
+const api = axios.create({
+  baseURL: 'http://localhost:3333',
+});
+
+export default api;

@@ -9,7 +9,7 @@ export const fetchCategories = createAsyncThunk(
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || 'Failed to fetch categories'
+        error.response?.data?.msg || 'Failed to fetch categories'
       );
     }
   }
