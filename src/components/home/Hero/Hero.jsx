@@ -3,7 +3,10 @@ import styles from './hero.module.css';
 
 const Hero = () => {
   return (
-    <section className={styles.hero}>
+    <section
+      className={styles.hero}
+      style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/hero-banner.png)` }}
+    >
       <div className={styles.overlay}>
         <div className={styles.content}>
           <h1 className={styles.title}>
