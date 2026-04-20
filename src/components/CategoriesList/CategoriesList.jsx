@@ -1,49 +1,35 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPopularCategories } from '../../../features/categories/categoriesSlice';
-import styles from './categoriesSection.module.css';
+import { fetchAllCategories } from '../../features/categories/categoriesSlice';
+import styles from './categoriesList.module.css';
 
-const CategoriesSection = () => {
+const CategoriesList = () => {
   const dispatch = useDispatch();
-
-  const { popularItems, popularStatus, error } = useSelector(
-    (state) => state.categories
-  );
+  const { items, status, error } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    if (popularStatus === 'idle') {
-      dispatch(fetchPopularCategories());
+    if (status === 'idle') {
+      dispatch(fetchAllCategories());
     }
-  }, [dispatch, popularStatus]);
+  }, [dispatch, status]);
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.top}>
-          <div className={styles.titleRow}>
-            <h2 className={styles.title}>Categories</h2>
-            <div className={styles.line}></div>
-          </div>
-
-          <Link to="/categories" className={styles.button}>
-            All categories
-          </Link>
-        </div>
-
-        {popularStatus === 'loading' && (
+        {status === 'loading' && (
           <p className={styles.message}>Loading...</p>
         )}
 
-        {popularStatus === 'failed' && (
+        {status === 'failed' && (
           <p className={styles.message}>
             {error || 'Something went wrong'}
           </p>
         )}
 
-        {popularStatus === 'succeeded' && (
+        {status === 'succeeded' && (
           <div className={styles.grid}>
-            {popularItems.map((category) => (
+            {items.map((category) => (
               <Link
                 to={`/categories/${category.slug}`}
                 key={category.id}
@@ -64,4 +50,4 @@ const CategoriesSection = () => {
   );
 };
 
-export default CategoriesSection;
+export default CategoriesList;

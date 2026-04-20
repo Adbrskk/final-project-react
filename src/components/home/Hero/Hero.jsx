@@ -15,9 +15,9 @@ const Hero = () => {
             on Pets Products!
           </h1>
 
-          <Link to="/sales" className={styles.button}>
+          <a href="#sale" className={styles.button}>
             Check out
-          </Link>
+          </a>
         </div>
       </div>
     </section>
