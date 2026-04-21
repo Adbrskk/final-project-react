@@ -79,21 +79,25 @@ const productSlice = createSlice({
         state.status = 'loading';
         state.error = null;
       })
+      
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+      state.status = 'succeeded';
 
-        const data = action.payload;
+      const data = action.payload;
 
-        if (Array.isArray(data.products)) {
-          state.items = data.products;
-        } else if (Array.isArray(data.data)) {
-          state.items = data.data;
-        } else {
-          state.items = [];
-        }
+      if (Array.isArray(data?.data?.products)) {
+        state.items = data.data.products;
+      } else if (Array.isArray(data?.products)) {
+        state.items = data.products;
+      } else if (Array.isArray(data?.data)) {
+        state.items = data.data;
+      } else {
+        state.items = [];
+      }
 
-        state.categoryTitle = data.category?.title || data.title || '';
-      })
+      state.categoryTitle = data?.category?.title || data?.title || '';
+    })
+
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;

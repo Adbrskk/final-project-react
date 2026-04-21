@@ -1,0 +1,288 @@
+.section {
+  padding: 40px 0 80px;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.breadcrumbLink,
+.breadcrumbCurrent {
+  min-height: 36px;
+  padding: 8px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #282828;
+  background: #ffffff;
+}
+
+.breadcrumbLink {
+  color: #8b8b8b;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr 520px;
+  gap: 32px;
+  align-items: start;
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thumbnailButton {
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.thumbnailButtonActive {
+  border-color: #0d50ff;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.mainImageWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f6f6f6;
+}
+
+.mainImage {
+  width: 100%;
+  height: 640px;
+  object-fit: contain;
+  display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #282828;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.currentPrice {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: #282828;
+}
+
+.oldPrice {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: line-through;
+  color: #8b8b8b;
+}
+
+.badge {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #0d50ff;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.actionsRow {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+}
+
+.counterButton {
+  width: 58px;
+  height: 58px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.counterButton:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.counterButton:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.counterValue {
+  width: 80px;
+  height: 58px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #282828;
+}
+
+.addButton {
+  flex: 1;
+  min-height: 58px;
+  border: none;
+  border-radius: 8px;
+  background: #0d50ff;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addButton:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #282828;
+}
+
+.descriptionText {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #282828;
+}
+
+.readMoreButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  width: fit-content;
+  font-size: 20px;
+  color: #282828;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.message {
+  font-size: 24px;
+  color: #282828;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: 120px 1fr;
+  }
+
+  .info {
+    grid-column: 1 / -1;
+  }
+
+  .thumbnailImage {
+    height: 120px;
+  }
+
+  .mainImage {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .galleryColumn {
+    flex-direction: row;
+    order: 2;
+  }
+
+  .mainImageWrapper {
+    order: 1;
+  }
+
+  .info {
+    order: 3;
+  }
+
+  .mainImage {
+    height: 360px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .currentPrice {
+    font-size: 48px;
+  }
+
+  .oldPrice {
+    font-size: 28px;
+  }
+
+  .actionsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+}

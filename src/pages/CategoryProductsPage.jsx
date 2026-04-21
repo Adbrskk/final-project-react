@@ -10,7 +10,10 @@ import {
 const CategoryProductsPage = () => {
   const dispatch = useDispatch();
   const { slug } = useParams();
-  const { categoryTitle } = useSelector((state) => state.products);
+
+  const { categoryTitle, products, loading, error } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
     dispatch(resetProductsState());
@@ -20,6 +23,9 @@ const CategoryProductsPage = () => {
   return (
     <ProductsGridSection
       title={categoryTitle || 'Category'}
+      products={products}
+      loading={loading}
+      error={error}
       breadcrumbs={[
         { label: 'Main page', to: '/' },
         { label: 'Categories', to: '/categories' },
