@@ -7,7 +7,7 @@ import styles from './productsGridSection.module.css';
 const ProductsGridSection = ({ title, breadcrumbs }) => {
   const dispatch = useDispatch();
   const { items, status, error } = useSelector((state) => state.products);
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state) => state.cart?.items || []);
 
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
@@ -80,12 +80,7 @@ const ProductsGridSection = ({ title, breadcrumbs }) => {
             />
           </label>
 
-          <div className={styles.filterGroup}>
-            <span className={styles.filterLabel}>Sorted</span>
-            <select className={styles.select} defaultValue="default">
-              <option value="default">by default</option>
-            </select>
-          </div>
+          
         </div>
 
         {status === 'loading' && (

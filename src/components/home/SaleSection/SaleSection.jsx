@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../../../features/products/productSlice';
+import { fetchAllProducts } from '../../../features/products/productSlice';
+import { addToCart } from '../../../features/cart/cartSlice';
 import styles from './saleSection.module.css';
 
 const SaleSection = () => {
@@ -10,7 +11,7 @@ const SaleSection = () => {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchProducts());
+      dispatch(fetchAllProducts());
     }
   }, [dispatch, status]);
 
