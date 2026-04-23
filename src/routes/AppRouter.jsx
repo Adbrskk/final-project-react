@@ -7,6 +7,7 @@ import CategoryProductsPage from '../pages/CategoryProductsPage';
 import AllProductsPage from '../pages/AllProductsPage';
 import SalesPage from '../pages/SalesPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import CartPage from '../pages/CartPage';
 
 const AppRouter = () => {
   return (
