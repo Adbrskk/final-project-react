@@ -1,16 +1,22 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './header.module.css';
 
 const Header = () => {
-  const cartCount = 0;
+  const cartItems = useSelector((state) => state.cart?.items || []);
+
+  const cartCount = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0
+  );
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logoWrapper}>
+        <Link to="/" className={styles.logoLink}>
           <img
             src="/assets/logos/logo.png"
-            alt="Pet Shop logo"
+            alt="Pet Shop"
             className={styles.logo}
           />
         </Link>
@@ -59,7 +65,9 @@ const Header = () => {
             alt="Cart"
             className={styles.cartIcon}
           />
-          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+          {cartCount > 0 && (
+            <span className={styles.badge}>{cartCount}</span>
+          )}
         </Link>
       </div>
     </header>

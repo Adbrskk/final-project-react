@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import HomePage from '../pages/HomePage';
 import CategoriesPage from '../pages/CategoriesPage';
-import ProductsPage from '../pages/ProductsPage';
 import CategoryProductsPage from '../pages/CategoryProductsPage';
 import AllProductsPage from '../pages/AllProductsPage';
+import ProductsPage from '../pages/ProductsPage';
 import SalesPage from '../pages/SalesPage';
-import NotFoundPage from '../pages/NotFoundPage';
 import CartPage from '../pages/CartPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const AppRouter = () => {
   return (
@@ -20,6 +20,7 @@ const AppRouter = () => {
           <Route path="/products" element={<AllProductsPage />} />
           <Route path="/products/:slug" element={<ProductsPage />} />
           <Route path="/sales" element={<SalesPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
