@@ -1,10 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
+import {
+  fetchAllProducts,
+  resetProductsState,
+} from '../../../features/products/productSlice';
 import styles from './productsGridSection.module.css';
 
-const ProductsGridSection = ({ title, breadcrumbs }) => {
+const ProductsGridSection = ({ title, breadcrumbs, mode = 'category' }) => {
   const dispatch = useDispatch();
   const { items, status, error } = useSelector((state) => state.products);
   const cartItems = useSelector((state) => state.cart?.items || []);
@@ -13,19 +17,33 @@ const ProductsGridSection = ({ title, breadcrumbs }) => {
   const [priceTo, setPriceTo] = useState('');
   const [discountOnly, setDiscountOnly] = useState(false);
 
+  useEffect(() => {
+    if (mode === 'all' || mode === 'sales') {
+      dispatch(resetProductsState());
+      dispatch(fetchAllProducts());
+    }
+  }, [dispatch, mode]);
+
   const filteredProducts = useMemo(() => {
-    return items.filter((product) => {
-      const actualPrice =
-        product.discont_price !== null ? product.discont_price : product.price;
+    return items
+      .filter((product) => {
+        const actualPrice =
+          product.discont_price !== null ? product.discont_price : product.price;
 
-      const matchesFrom = priceFrom === '' || actualPrice >= Number(priceFrom);
-      const matchesTo = priceTo === '' || actualPrice <= Number(priceTo);
-      const matchesDiscount =
-        !discountOnly || product.discont_price !== null;
+        const matchesFrom =
+          priceFrom === '' || actualPrice >= Number(priceFrom);
+        const matchesTo = priceTo === '' || actualPrice <= Number(priceTo);
 
-      return matchesFrom && matchesTo && matchesDiscount;
-    });
-  }, [items, priceFrom, priceTo, discountOnly]);
+        const salesFilter = mode === 'sales'
+          ? product.discont_price !== null
+          : true;
+
+        const matchesDiscount =
+          !discountOnly || product.discont_price !== null;
+
+        return matchesFrom && matchesTo && matchesDiscount && salesFilter;
+      });
+  }, [items, priceFrom, priceTo, discountOnly, mode]);
 
   const getDiscountPercent = (price, discontPrice) => {
     if (!price || !discontPrice) return 0;
@@ -79,8 +97,6 @@ const ProductsGridSection = ({ title, breadcrumbs }) => {
               className={styles.checkbox}
             />
           </label>
-
-          
         </div>
 
         {status === 'loading' && (

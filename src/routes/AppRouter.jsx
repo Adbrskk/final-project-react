@@ -4,6 +4,8 @@ import HomePage from '../pages/HomePage';
 import CategoriesPage from '../pages/CategoriesPage';
 import ProductsPage from '../pages/ProductsPage';
 import CategoryProductsPage from '../pages/CategoryProductsPage';
+import AllProductsPage from '../pages/AllProductsPage';
+import SalesPage from '../pages/SalesPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const AppRouter = () => {
@@ -14,7 +16,9 @@ const AppRouter = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/categories/:slug" element={<CategoryProductsPage />} />
+          <Route path="/products" element={<AllProductsPage />} />
           <Route path="/products/:slug" element={<ProductsPage />} />
+          <Route path="/sales" element={<SalesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
